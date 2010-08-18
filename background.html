@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- <link rel="stylesheet" href="css/copyPaste.css" type="text/css">
+	<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="js/copyPaste.js"></script> -->
+</head>
+
+<script>
+	console.log("background loaded!")
+	
+		
+	chrome.browserAction.onClicked.addListener(function(tab){
+		console.log("browser action clicked!");	
+	
+		chrome.tabs.sendRequest(tab.id, "create_extension", function(response) {
+	  	console.log(response);
+		});	
+	});
+	
+</script>
+
+<body>
+
+</body>
+</html>
+
+
+collection = {}
+
+collection.a = []
