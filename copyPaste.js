@@ -7,7 +7,7 @@ index = 0;
 ext.drawUI = function(){
 
    console.log("draw ui");
-   
+
    var menu_bar = 
      $('<div id="e_1x">')
        .append($('<h1 class="logo">')
@@ -18,16 +18,16 @@ ext.drawUI = function(){
          .append($('<li class="buttons">').html($('<a id="clear" class="links">').text("clear")))
          .append($('<li class="buttons">').html($('<a id="close" class="links">').text("close")))
        );
-  
+
   var form = 
     $('<div>').attr('style', 'width:1px; height:1px background:#00CC33; overflow:hidden;')
       .append($('<form>').append($('<textarea class="clipboard">')));
-      
-      
-   menu_bar.hide();   
+
+
+   menu_bar.hide(); 
    menu_bar.appendTo($('body'));
    form.appendTo($('body'));
-      
+
 };
 
 
@@ -201,7 +201,7 @@ page.actions.update_clipboard = function(){
   $('.border_1x').each(function(i, e){
     string += $(e).attr("_data") + "\n";
   });
-  
+
   var textarea = $('textarea.clipboard');
   textarea.val(string || " ");
   textarea.select();

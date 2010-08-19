@@ -1,6 +1,7 @@
 
 // VARIABLES
 copyPaste = {};
+copyPaste.open = false;
 clipboard = {};
 menuBar = {};
 page = {};
@@ -15,7 +16,12 @@ elements.uId = 0;
 chrome.extension.onRequest.addListener(
   function(request, sender, sendResponse) {
     if (request == "create_extension") {
-      copyPaste.begin();
+      if(copyPaste.open) {
+        return false;
+      } else {
+        copyPaste.begin();
+        copyPaste.open = true;
+      }
     } else {
       sendResponse("nothing to do")
     }
@@ -26,7 +32,6 @@ $(document).ready(function(){
   console.log("draw menubar and add clipbard to dom");
   menuBar.drawMenubar();
   clipboard.addClipboardToDom();
-  $('#e_1x').hide();
 })
 
 
@@ -36,12 +41,12 @@ copyPaste.begin = function(){
   try {
     console.info("begin copyPaste!")
     page.createEvents();
+    menuBar.createEvents();
     menuBar.slideDown();
-    
+
   } catch (error) {
     console.error("copy paste failed to open:\n%s", error)
   }
-
 };
 
 copyPaste.end = function(){
@@ -49,8 +54,9 @@ copyPaste.end = function(){
     console.log("end copyPaste!");
     clipboard.clearSelection();
     page.removeEvents();
+    menuBar.removeEvents();
     menuBar.slideUp();
-    
+
   } catch (error) {
     console.error("copy paste failed to end:\n%s", error);
   }
