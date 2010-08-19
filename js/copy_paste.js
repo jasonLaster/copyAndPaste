@@ -30,7 +30,8 @@ chrome.extension.onRequest.addListener(
 
 $(document).ready(function(){
   console.log("draw menubar and add clipbard to dom");
-  menuBar.drawMenubar();
+  page.addPageClass()
+  menuBar.addMenubarToDom();
   clipboard.addClipboardToDom();
 })
 
@@ -56,6 +57,7 @@ copyPaste.end = function(){
     page.removeEvents();
     menuBar.removeEvents();
     menuBar.slideUp();
+    copyPaste.open = false;
 
   } catch (error) {
     console.error("copy paste failed to end:\n%s", error);

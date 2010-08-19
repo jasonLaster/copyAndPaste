@@ -2,7 +2,8 @@
 
 clipboard.addClipboardToDom = function(){
 
-  var form = $('<div>').attr('style', 'width:1px; height:1px background:#00CC33; overflow:hidden;')
+  var form = $('<div class="form_1x">')
+    .attr('style', 'width:1px; height:1px background:#00CC33; overflow:hidden;')
     .append($('<form>').append($('<textarea class="clipboard">')));
 
   form.appendTo($('body'));

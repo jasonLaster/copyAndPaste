@@ -1,8 +1,8 @@
 
 
-menuBar.drawMenubar = function(){
+menuBar.addMenubarToDom = function(){
 
-   var menubar = $('<div class="menuBar" id="e_1x">')
+   var menubar = $('<div class="menuBar_1x" id="e_1x">')
      .append($('<h1 class="logo">')
        .append($('<span class="copy">').text("COPY "))
        .append($('<span class="paste">').text("PASTE"))
