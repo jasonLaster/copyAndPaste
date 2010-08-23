@@ -1,7 +1,6 @@
 
-
-clipboard.addClipboardToDom = function(){
-
+clipboard.create = function(){
+  console.log("create clipboard");
   var form = $('<div class="form_1x">')
     .attr('style', 'width:1px; height:1px background:#00CC33; overflow:hidden;')
     .append($('<form>').append($('<textarea class="clipboard">')));
@@ -9,14 +8,11 @@ clipboard.addClipboardToDom = function(){
   form.appendTo($('body'));
 }
 
-
-clipboard.updateClipboard = function(){
+clipboard.update = function(){
   console.log("update clipboard");
   var string = "";
 
-  $('.meta_1x').each(function(i, e){
-    string += $(e).attr("_data") + "\n";
-  });
+  $('.meta_1x').each(function(i, e){ string += $(e).attr("_data") + "\n"; });
 
   var textarea = $('textarea.clipboard');
   textarea.val(string || " ");
@@ -24,7 +20,7 @@ clipboard.updateClipboard = function(){
   textarea.focus();
 };
 
-clipboard.clearSelection = function(){
+clipboard.clear = function(){
   console.log("clear clipboard");
-  $('.selected_1x').remove();
+  selection.clear();
 }

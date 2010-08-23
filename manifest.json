@@ -1,6 +1,6 @@
 {
   "name": "Copy And Paste",
-  "version": "1.2",
+  "version": "1.22",
   "description": "Copy and Paste for the browser",
 
   "background_page": "background.html",
@@ -14,7 +14,7 @@
       {
         "matches": ["http://*/*"],
         "css": ["copyPaste.css"],
-        "js": ["js/jquery.js", "js/copy_paste.js", "js/page.js", "js/selected_element.js", "js/menu_bar.js", "js/clipboard.js", "js/sprintf.js"],
+        "js": ["js/jquery.js", "js/copy_paste.js", "js/page.js", "js/selected_element.js", "js/meta_element.js", "js/menu_bar.js", "js/clipboard.js", "js/sprintf.js"],
         "run_at": "document_start"
       }
     ],

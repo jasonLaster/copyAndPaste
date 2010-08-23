@@ -50,7 +50,7 @@ chrome.extension.onRequest.addListener(
 
 
 ext.openCP = function(){
-  
+
   ext.instantiateEvents = function(){
     // 
     // $('#e_1x #clear').live('click', function(){    
@@ -70,7 +70,7 @@ ext.openCP = function(){
   };
 
   console.log("open Copy and Paste")
-  
+
   ext.instantiateEvents();
   ext.openMenuBar();
 }

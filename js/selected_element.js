@@ -1,60 +1,53 @@
+selection._index = 0;
 
+selection.toggle = function(element){
+  console.log("toggle")
+  if (selection._isSelected(element)){
+    selection._remove(element);
+  } else {
+    selection._add(element);
+  }
+}
 
-elements.addToSelection = function(element){
-  
+selection.clear = function(){
+  console.log("remove selection")
+  this._removeAll();
+  metaElement._removeAll();
+  clipboard.update();
+};
+
+selection._isSelected = function(jqWS){
+  return (jqWS.hasClass('selected_1x') || jqWS.hasClass('meta_1x'))
+};
+
+selection._add = function(element){
+  console.log("add");
   element.addClass("cp_1x selected_1x");
-  element.attr("_index", ++index);
-  
-  elements.createMetaElement(element);
-  clipboard.updateClipboard();
+  element.attr("_index", ++selection._index);
+  metaElement.create(element)
+  clipboard.update();
 };
 
-elements.removeFromSelection = function(metaElement){
-  var index = metaElement.attr("_index");
-  var selectedElement = $('.selected_1x').filter(function(){
-    return $(this).attr("_index") == element_index;
-  });
-  
-  selected_element.removeClass("selected_1x");
-  metaElement.remove();
-  clipboard.update_clipboard();
-};
+selection._remove = function(element){
+  console.log("remove");
+  var index = element.attr("_index");
+  var meta_element = $('.meta_1x').filter(function(){ return $(this).attr("_index") == index;});
 
-elements.createMetaElement = function(selectedElement){
-  
-  var getMetaStyle = function(e){
-    var meta = {};
-    meta.border_px = 2;
-    meta.left = (e.x + e.margin_left + e.padding_left) + "px";
-    meta.top  = (e.y + e.padding_top  + e.padding_top) + "px";
-    meta.width = (e.width) + "px";
-    meta.height = (e.height) + "px";
-    return meta;
-  }
+  metaElement._remove(meta_element);
+  element.removeClass('selected_1x');
+  clipboard.update();
+}
 
-  var MetaStmt = function(meta){
-    return sprintf("left: %s; top: %s; width: %s; height: %s;", meta.left, meta.top, meta.width, meta.height);
-  }
-    
-  
-  var e = elements.getStyle(selectedElement);
-  var metaStyle = MetaStmt(getMetaStyle(e));
-  
-  var meta_element = $('<div class="meta_1x cp_1x">')
-    .attr("style", style)
-    .attr("_data", element.text())
-    .attr("_index", index);
-     
-  $('body').append(meta_element);
-  
-};
+selection._removeAll = function(){
+  $('.selected_1x').removeClass('selected_1x');
+  clipboard.update();
+}
 
-elements.elementIsSelected = function(element){
-  return (element.hasClass('selected_1x') || element.hasClass('meta_1x'))
-};
-
-elements.getStyle = function(element){
+selection._getStyle = function(element){
+  console.log("get element style");
   var e = {};
+  e._index = element.attr("_index");
+  e._text = element.text();
   e.x = element.offset().left;
   e.y = element.offset().top;
   e.width = element.width();
@@ -65,8 +58,3 @@ elements.getStyle = function(element){
   e.padding_top = parseInt(element.css("padding-top"));
   return e;
 }
-
-elements.clearSelection = function(){
-  $('.selected_1x, .meta_1x').remove();
-};
-
