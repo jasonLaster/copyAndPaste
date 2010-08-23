@@ -7,8 +7,15 @@ menuBar.draw = function(){
        .append($('<span class="copy">').text("COPY "))
        .append($('<span class="paste">').text("PASTE"))
      )
-     .append($('<ul class="controls">')
-       .append($('<li class="buttons">').html($('<a class="clear links">').text("clear")))
+
+     .append($('<ul class="controls center">')
+       .append($('<li class="buttons">').html($('<a class="about links">').text("preview")))
+       .append($('<li class="buttons">').html($('<a class="about links">').text("clear")))
+     )
+
+     .append($('<ul class="controls right">')
+       .append($('<li class="buttons">').html($('<a class="about links">').text("about")))
+       .append($('<li class="buttons">').html($('<a class="feedback links">').text("feedback")))
        .append($('<li class="buttons">').html($('<a class="close links">').text("close")))
      );
 
