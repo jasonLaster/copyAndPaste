@@ -8,24 +8,14 @@
 
 <script>
 	console.log("background loaded!")
-	
-		
 	chrome.browserAction.onClicked.addListener(function(tab){
-		console.log("browser action clicked!");	
-	
+		console.log("browser action clicked!");
 		chrome.tabs.sendRequest(tab.id, "create_extension", function(response) {
 	  	console.log(response);
-		});	
+		});
 	});
-	
 </script>
 
-<body>
-
-</body>
+	<body>
+	</body>
 </html>
-
-
-collection = {}
-
-collection.a = []

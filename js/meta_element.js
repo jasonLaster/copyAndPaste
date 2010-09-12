@@ -1,3 +1,4 @@
+
 metaElement.create = function(selected_element){
   console.log("create meta element");
   var selected_element_style = selection._getStyle(selected_element);

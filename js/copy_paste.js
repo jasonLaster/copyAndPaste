@@ -26,9 +26,12 @@ chrome.extension.onRequest.addListener(
   }
 );
 
+
+
 $(document).ready(function(){
   console.log("draw menubar and add clipbard to dom");
   page.addPageClass()
+  page._initialize();
   menuBar.draw();
   clipboard.create();
 })

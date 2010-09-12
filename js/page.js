@@ -1,6 +1,7 @@
 
 
 
+
 page.createEvents = function(){
   console.log("create page events");
   $('.page_1x, .page_1x *').live('click', function(){
@@ -24,6 +25,16 @@ page.wrapElements = function(){
 }
 
 page.addPageClass = function(){
-  $('body > *').addClass("page_1x")
+  $('body > *').addClass("page_1x");
 }
 
+
+page._initialize = function(){
+  page.width = $(window).width();
+}
+
+$(window).resize(function(){
+  page.width = $(window).width();
+  clipboard.preview._left_offset();
+  menuBar._center_buttons();
+});
