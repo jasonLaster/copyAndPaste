@@ -6,5 +6,5 @@ Small chrome extension utility for copying text from a webpage. Just click on al
 
 
 #### developers:
-Jason Laster
-John G. Slater
++ Jason Laster
++ John G. Slater
